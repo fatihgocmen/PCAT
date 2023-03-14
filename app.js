@@ -1,16 +1,13 @@
 const express = require('express')
-
-const app = express()
+const path = require('path')
 const port = 3000
+const app = express()
 
-const photo = {
-    id: 1,
-    name: 'Photo Name',
-    description: 'Photo Description'
-}
+app.use(express.static('public'))
+
 
 app.get('/', (req, res) => {
-    res.send(photo)
+    res.sendFile(path.resolve(__dirname, 'temp/index.html'))
 })
 
 app.listen(port, () => {
